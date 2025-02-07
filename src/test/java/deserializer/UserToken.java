@@ -1,5 +1,7 @@
 package deserializer;
 
+
+
 public class UserToken {
     private String token;
     private String refresh_token;
@@ -9,6 +11,9 @@ public class UserToken {
         this.exp = exp;
         this.token = token;
         this.refresh_token = refresh_token;
+    }
+
+    public UserToken() {
     }
 
     public String getToken() {

@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import deserializer.SuccessLogin;
 import deserializer.UserToken;
 import io.restassured.http.ContentType;
@@ -15,11 +16,14 @@ public class SmokeTest {
 
     private final static String ENDPOINT_LOGIN_PHONE = "/login_phone/{phone}";
 
-    private final static long USER_PHONE = 79000000001L;
+    private final static String USER_PHONE = "79000000001";
+    private final static String CMC_CODE = "1234";
 
 
 
-
+    /**
+     * Вход. Отправка номера телефона на "/login_phone/{phone}" и получение СМС
+     */
     @Test
     public void authorization() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
@@ -41,4 +45,24 @@ public class SmokeTest {
 
     }
 
+    /**
+     * Вход. Отправка номера телефона "/login_phone/{phone}" и получение токенов
+     */
+    @Test
+    public void authorisationWithCMC() {
+        Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
+        LoginBody loginBody = new LoginBody(DEVICE_ID);
+        UserToken userToken = given()
+                .contentType(ContentType.JSON)
+                .queryParams("code", CMC_CODE)
+                .body(loginBody)
+                .post("/login_phone/" + USER_PHONE)
+                .then().log().all()
+                .extract().as(UserToken.class);
+
+        Assertions.assertNotNull(userToken.getToken());
+        Assertions.assertNotNull(userToken.getRefresh_token());
+        Assertions.assertNotNull(userToken.getExp());
+
+    }
 }
