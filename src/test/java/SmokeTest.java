@@ -36,7 +36,7 @@ public class SmokeTest {
                 //.pathParam("{phone}", USER_PHONE)
                 .body(loginBody)
                 .when()
-                .post("/login_phone/79000000001")
+                .post("/login_phone/" + USER_PHONE)
                 .then().log().all()
                 .extract().as(SuccessLogin.class);
 
@@ -49,7 +49,7 @@ public class SmokeTest {
      * Вход. Отправка номера телефона "/login_phone/{phone}" и получение токенов
      */
     @Test
-    public void authorisationWithCMC() {
+    public void authorizationWithCMC() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
         LoginBody loginBody = new LoginBody(DEVICE_ID);
         UserToken userToken = given()
