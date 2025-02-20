@@ -1,8 +1,11 @@
+package testkits;
+
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import testkits.environment.TestSteps;
 
-public class SmokeTest extends TestSteps{
+public class SmokeTest extends TestSteps {
 
     /**
      * Вход в приложение

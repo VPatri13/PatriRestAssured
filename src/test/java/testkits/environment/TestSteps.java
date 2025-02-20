@@ -1,3 +1,4 @@
+package testkits.environment;
 import deserializer.SuccessLogin;
 import deserializer.UserToken;
 import io.qameta.allure.Step;
