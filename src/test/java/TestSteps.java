@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import requestbody.LoginBody;
+import requestbody.LoginBodyWithOtpToken;
 
 import static io.restassured.RestAssured.given;
 
@@ -54,12 +55,12 @@ public abstract class TestSteps {
     public void login_phoneWithSMS() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
         String otp_token = login_phoneWithoutSMS();
-        LoginBody loginBody = new LoginBody(DEVICE_ID, otp_token);
+        LoginBodyWithOtpToken loginBodyWithOtpToken = new LoginBodyWithOtpToken(DEVICE_ID, otp_token);
         UserToken userToken = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", AUTHENTICATION_TOKEN)
                 .queryParams("code", CMC_CODE)
-                .body(loginBody)
+                .body(loginBodyWithOtpToken)
                 .post("/login_phone/" + USER_PHONE)
                 .then().log().all()
                 .extract().as(UserToken.class);

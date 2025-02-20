@@ -12,7 +12,7 @@ public class SmokeTest extends TestSteps{
    public void authorization() {
         Allure.step("Вход. Отправка номера телефона на '/login_phone/{phone}' для получения СМС",
                 this::login_phoneWithoutSMS);
-        //Allure.step("Вход. Отправка номера телефона и СМС на '/login_phone/{phone}' и получение токенов",
-               // this::login_phoneWithSMS);
+        Allure.step("Вход. Отправка номера телефона и СМС на '/login_phone/{phone}' и получение токенов",
+                this::login_phoneWithSMS);
     }
 }
