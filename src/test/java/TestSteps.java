@@ -28,7 +28,7 @@ public abstract class TestSteps {
     private final static String CMC_CODE = "1234";
 
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")
-    public void login_phoneWithoutSMS() {
+    public String login_phoneWithoutSMS() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
 
         String message = "Verification code has been sent";
@@ -47,12 +47,14 @@ public abstract class TestSteps {
         Assertions.assertTrue(successLogin.isSuccess());
         Assertions.assertEquals(message, successLogin.getMessage());
 
+        return successLogin.getOtp_token();
     }
 
     @Step("Вход. Отправка номера телефона и СМС \"/login_phone/{phone}\" и получение токенов")
     public void login_phoneWithSMS() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
-        LoginBody loginBody = new LoginBody(DEVICE_ID);
+        String otp_token = login_phoneWithoutSMS();
+        LoginBody loginBody = new LoginBody(DEVICE_ID, otp_token);
         UserToken userToken = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", AUTHENTICATION_TOKEN)
