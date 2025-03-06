@@ -24,10 +24,21 @@ public abstract class TestSteps {
             "jP143VDIMzXOAo-MKqCu5Sg72bAET5bjjU-Mw7_syU3W1b84R5harJzOzovxuvXkgmjh6I8h6H33W0zZs1QvHKmhUUXk91YqlVL" +
             "A1mUNLGlp8CaFgZylV5ib6PxubrG6LsdN6-aKCQ7QdK33qqBMPLp3rDL9stkBNZBji8znsa1Q6-ocuK6mjB3iykvrXN4rVE6M4h" +
             "iLYHPxbXemC1SpkLIo5QOmxr4SqUQWt16U8N2Ft1A";
-    private final static String ENDPOINT_LOGIN_PHONE = "/login_phone/{phone}";
+    private final static String ENDPOINT_LOGIN_PHONE = "/login_phone/";
+    private final static String ENDPOINT_REGISTRATION = "/register";
 
+    private final static String REGISTER_USER_PHONE = "79000070001";
     private final static String USER_PHONE = "79000000001";
     private final static String CMC_CODE = "1234";
+
+    @Step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register")
+    public String registration() {
+        Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
+
+
+        return
+    }
+
 
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")
     public String login_phoneWithoutSMS() {
@@ -42,7 +53,7 @@ public abstract class TestSteps {
                 //.pathParam("{phone}", USER_PHONE)
                 .body(loginBody)
                 .when()
-                .post("/login_phone/" + USER_PHONE)
+                .post(ENDPOINT_LOGIN_PHONE + USER_PHONE)
                 .then().log().all()
                 .extract().as(SuccessLogin.class);
 
@@ -62,7 +73,7 @@ public abstract class TestSteps {
                 .header("Authorization", AUTHENTICATION_TOKEN)
                 .queryParams("code", CMC_CODE)
                 .body(loginBodyWithOtpToken)
-                .post("/login_phone/" + USER_PHONE)
+                .post(ENDPOINT_LOGIN_PHONE + USER_PHONE)
                 .then().log().all()
                 .extract().as(UserToken.class);
 
@@ -71,5 +82,6 @@ public abstract class TestSteps {
         Assertions.assertNotNull(userToken.getExp());
 
     }
+
 
 }
