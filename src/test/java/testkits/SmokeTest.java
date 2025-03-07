@@ -8,6 +8,18 @@ import testkits.environment.TestSteps;
 public class SmokeTest extends TestSteps {
 
     /**
+     * Регистрация нового пользователя
+     */
+    @Test
+    @DisplayName("Регистрация")
+    public void userRegistration() {
+        Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
+                this::registration);
+    }
+
+
+
+    /**
      * Вход в приложение
      */
     @Test
@@ -18,4 +30,6 @@ public class SmokeTest extends TestSteps {
         Allure.step("Вход. Отправка номера телефона и СМС на '/login_phone/{phone}' и получение токенов",
                 this::login_phoneWithSMS);
     }
+
+
 }

@@ -1,4 +1,5 @@
 package testkits.environment;
+import deserializer.RegistrationResponse;
 import deserializer.SuccessLogin;
 import deserializer.UserToken;
 import io.qameta.allure.Step;
@@ -6,6 +7,7 @@ import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
 import requestbody.LoginBody;
 import requestbody.LoginBodyWithOtpToken;
+import requestbody.RegistrationBody;
 
 import static io.restassured.RestAssured.given;
 
@@ -35,8 +37,21 @@ public abstract class TestSteps {
     public String registration() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
 
+        RegistrationBody registrationBody = new RegistrationBody(REGISTER_USER_PHONE, DEVICE_ID);
 
-        return
+        RegistrationResponse registrationResponse = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", AUTHENTICATION_TOKEN)
+                .body(registrationBody)
+                .when()
+                .post(ENDPOINT_REGISTRATION )
+                .then().log().all()
+                .extract().as(RegistrationResponse.class);
+
+        Assertions.assertEquals(REGISTER_USER_PHONE, registrationResponse.getPhone());
+        Assertions.assertNotNull(registrationResponse.getToken());
+
+        return registrationResponse.getToken();
     }
 
 
