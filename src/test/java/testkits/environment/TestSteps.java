@@ -55,6 +55,8 @@ public abstract class TestSteps {
     }
 
 
+
+
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")
     public String login_phoneWithoutSMS() {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
