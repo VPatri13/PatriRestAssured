@@ -1,4 +1,4 @@
-package deserializer;
+package authorization.model.response;
 
 public class SuccessLogin {
     public boolean success;

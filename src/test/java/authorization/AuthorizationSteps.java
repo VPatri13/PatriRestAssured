@@ -1,17 +1,18 @@
-package testkits.environment;
+package authorization;
 import deserializer.RegistrationResponse;
-import deserializer.SuccessLogin;
-import deserializer.UserToken;
+import authorization.model.response.SuccessLogin;
+import authorization.model.response.UserToken;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Assertions;
-import requestbody.LoginBody;
-import requestbody.LoginBodyWithOtpToken;
+import authorization.model.request.LoginBody;
+import authorization.model.request.LoginBodyWithOtpToken;
 import requestbody.RegistrationBody;
+import testkits.environment.Specifications;
 
 import static io.restassured.RestAssured.given;
 
-public abstract class TestSteps {
+public class AuthorizationSteps {
 
     private final static String AUTH_URL = "https://test.hyg-core.ru";
     private final static String DEVICE_ID = "12345678-1234-1234-1234-123456789123";
@@ -38,7 +39,6 @@ public abstract class TestSteps {
         Specifications.installSpecification(Specifications.requestSpec(AUTH_URL), Specifications.responseSpecOk200());
 
         RegistrationBody registrationBody = new RegistrationBody(REGISTER_USER_PHONE, DEVICE_ID);
-
         RegistrationResponse registrationResponse = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", AUTHENTICATION_TOKEN)
@@ -54,7 +54,7 @@ public abstract class TestSteps {
         return registrationResponse.getToken();
     }
 
-
+//    @Step()
 
 
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")

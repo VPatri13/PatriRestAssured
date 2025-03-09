@@ -1,4 +1,4 @@
-package deserializer;
+package authorization.model.response;
 
 
 

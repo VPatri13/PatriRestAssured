@@ -1,4 +1,4 @@
-package requestbody;
+package authorization.model.request;
 
 public class LoginBody {
     private String device_id;
