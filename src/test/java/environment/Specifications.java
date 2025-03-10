@@ -1,4 +1,4 @@
-package testkits.environment;
+package environment;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;

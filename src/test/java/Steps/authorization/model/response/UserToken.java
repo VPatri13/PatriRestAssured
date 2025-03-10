@@ -1,4 +1,4 @@
-package authorization.model.response;
+package Steps.authorization.model.response;
 
 
 

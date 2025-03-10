@@ -1,19 +1,21 @@
-import authorization.AuthorizationSteps;
+import Steps.authorization.AuthorizationSteps;
+import Steps.registration.RegistrationSteps;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class SmokeTest {
 
-//    /**
-//     * Регистрация нового пользователя
-//     */
-//    @Test
-//    @DisplayName("Регистрация")
-//    public void userRegistration() {
-//        Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
-//                this::registration);
-//    }
+    /**
+     * Регистрация нового пользователя
+     */
+    @Test
+    @DisplayName("Регистрация")
+    public void userRegistration() {
+        RegistrationSteps registrationSteps = new RegistrationSteps();
+        Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
+                registrationSteps::registration);
+    }
 
 
 

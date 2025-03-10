@@ -1,4 +1,4 @@
-package authorization.model.request;
+package Steps.authorization.model.request;
 
 public class LoginBodyWithOtpToken {
     public String device_id;

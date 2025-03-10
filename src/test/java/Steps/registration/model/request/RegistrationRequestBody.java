@@ -1,11 +1,11 @@
-package requestbody;
+package Steps.registration.model.request;
 
-public class RegistrationBody {
+public class RegistrationRequestBody {
 
     private String phone;
     private String device_id;
 
-    public RegistrationBody(String phone, String device_id) {
+    public RegistrationRequestBody(String phone, String device_id) {
         this.phone = phone;
         this.device_id = device_id;
     }

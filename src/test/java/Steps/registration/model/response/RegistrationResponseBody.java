@@ -1,16 +1,16 @@
-package deserializer;
+package Steps.registration.model.response;
 
-public class RegistrationResponse {
+public class RegistrationResponseBody {
 
     private String phone;
     private String token;
 
-    public RegistrationResponse(String phone, String token) {
+    public RegistrationResponseBody(String phone, String token) {
         this.phone = phone;
         this.token = token;
     }
 
-    public RegistrationResponse() {
+    public RegistrationResponseBody() {
     }
 
     public String getPhone() {
