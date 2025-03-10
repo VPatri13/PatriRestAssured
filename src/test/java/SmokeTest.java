@@ -13,8 +13,11 @@ public class SmokeTest {
     @DisplayName("Регистрация")
     public void userRegistration() {
         RegistrationSteps registrationSteps = new RegistrationSteps();
-        Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
+        String otpToken = Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
                 registrationSteps::registration);
+
+        Allure.step("Регистрация. Подтверждаем номер телефона, передав номер СМС на  https://test.hyg-core.ru/phone_verify/{phone}",
+                () -> registrationSteps.phoneVerify(otpToken));
     }
 
 
@@ -28,10 +31,11 @@ public class SmokeTest {
     @DisplayName("Авторизация")
     public void authorization() {
         AuthorizationSteps authorizationSteps = new AuthorizationSteps();
-        Allure.step("Вход. Отправка номера телефона на '/login_phone/{phone}' для получения СМС",
+
+        String otpToken = Allure.step("Вход. Отправка номера телефона на '/login_phone/{phone}' для получения СМС",
                 authorizationSteps::login_phoneWithoutSMS);
         Allure.step("Вход. Отправка номера телефона и СМС на '/login_phone/{phone}' и получение токенов",
-                authorizationSteps::login_phoneWithSMS);
+                () -> authorizationSteps.login_phoneWithSMS(otpToken));
     }
 
 

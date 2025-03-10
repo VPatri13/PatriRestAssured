@@ -5,6 +5,14 @@ public class SuccessLogin {
     public String message;
     public String otp_token;
 
+    public SuccessLogin(boolean success, String message, String otp_token) {
+        this.success = success;
+        this.message = message;
+        this.otp_token = otp_token;
+    }
+
+    public SuccessLogin() {
+    }
 
     public void setOtp_token(String otp_token) {
         this.otp_token = otp_token;

@@ -5,7 +5,7 @@ public class Constants {
     private Constants() {
         throw new UnsupportedOperationException("Это класс для хранения констант, его нельзя инстанцировать.");
     }
-    public static final String AUTH_URL = "https://test.hyg-core.ru";
+    public static final String BASE_URL = "https://test.hyg-core.ru";
     public static final String DEVICE_ID = "12345678-1234-1234-1234-123456789123";
     public static final String AUTHENTICATION_TOKEN = "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk2MDlkOGZlLWFjN2It" +
             "NDdiZC05NmQ0LTY1MTk1NjExMzg1MCIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJkZXZpY2VfaWQiOiIxMjM0NTYtMTIzN" +
@@ -20,8 +20,9 @@ public class Constants {
             "iLYHPxbXemC1SpkLIo5QOmxr4SqUQWt16U8N2Ft1A";
     public static final String ENDPOINT_LOGIN_PHONE = "/login_phone/";
     public static final String ENDPOINT_REGISTRATION = "/register";
+    public static final String ENDPOINT_PHONE_VERIFY = "/phone_verify/";
 
-    public static final String REGISTER_USER_PHONE = "79000070001";
+    public static final String REGISTER_USER_PHONE = "79000070102";
     public static final String USER_PHONE = "79000000001";
     public static final String CMC_CODE = "1234";
 

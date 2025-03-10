@@ -1,5 +1,5 @@
 package Steps.authorization;
-import Steps.registration.model.response.RegistrationResponseBody;
+
 import Steps.authorization.model.response.SuccessLogin;
 import Steps.authorization.model.response.UserToken;
 import environment.Constants;
@@ -14,33 +14,9 @@ import static io.restassured.RestAssured.given;
 
 public class AuthorizationSteps {
 
-
-//    @Step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register")
-//    public String registration() {
-//        Specifications.installSpecification(Specifications.requestSpec(Constants.AUTH_URL), Specifications.responseSpecOk200());
-//
-//        RegistrationRequestBody registrationRequestBody = new RegistrationRequestBody(Constants.REGISTER_USER_PHONE, Constants.DEVICE_ID);
-//        RegistrationResponseBody registrationResponseBody = given()
-//                .contentType(ContentType.JSON)
-//                .header("Authorization", Constants.AUTHENTICATION_TOKEN)
-//                .body(registrationRequestBody)
-//                .when()
-//                .post(Constants.ENDPOINT_REGISTRATION )
-//                .then().log().all()
-//                .extract().as(RegistrationResponseBody.class);
-//
-//        Assertions.assertEquals(Constants.REGISTER_USER_PHONE, registrationResponseBody.getPhone());
-//        Assertions.assertNotNull(registrationResponseBody.getToken());
-//
-//        return registrationResponseBody.getToken();
-//    }
-//
-
-
-
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")
     public String login_phoneWithoutSMS() {
-        Specifications.installSpecification(Specifications.requestSpec(Constants.AUTH_URL), Specifications.responseSpecOk200());
+        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL), Specifications.responseSpecOk200());
 
         String message = "Verification code has been sent";
 
@@ -62,9 +38,8 @@ public class AuthorizationSteps {
     }
 
     @Step("Вход. Отправка номера телефона и СМС \"/login_phone/{phone}\" и получение токенов")
-    public void login_phoneWithSMS() {
-        Specifications.installSpecification(Specifications.requestSpec(Constants.AUTH_URL), Specifications.responseSpecOk200());
-        String otp_token = login_phoneWithoutSMS();
+    public void login_phoneWithSMS(String otp_token) {
+        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL), Specifications.responseSpecOk200());
         LoginBodyWithOtpToken loginBodyWithOtpToken = new LoginBodyWithOtpToken(Constants.DEVICE_ID, otp_token);
         UserToken userToken = given()
                 .contentType(ContentType.JSON)
@@ -78,6 +53,8 @@ public class AuthorizationSteps {
         Assertions.assertNotNull(userToken.getToken());
         Assertions.assertNotNull(userToken.getRefresh_token());
         Assertions.assertNotNull(userToken.getExp());
+        Assertions.assertFalse(userToken.getToken().isBlank());
+        Assertions.assertFalse(userToken.getRefresh_token().isBlank());
 
     }
 
