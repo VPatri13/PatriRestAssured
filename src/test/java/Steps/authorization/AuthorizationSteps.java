@@ -16,7 +16,8 @@ public class AuthorizationSteps {
 
     @Step("Вход. Отправка номера телефона на \"/login_phone/{phone}\" для получения СМС")
     public String login_phoneWithoutSMS() {
-        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL), Specifications.responseSpecOk200());
+        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL
+                + Constants.ENDPOINT_LOGIN_PHONE + Constants.USER_PHONE), Specifications.responseSpecOk200());
 
         String message = "Verification code has been sent";
 
@@ -27,7 +28,7 @@ public class AuthorizationSteps {
                 //.pathParam("{phone}", USER_PHONE)
                 .body(loginBody)
                 .when()
-                .post(Constants.ENDPOINT_LOGIN_PHONE + Constants.USER_PHONE)
+                .post()
                 .then().log().all()
                 .extract().as(SuccessLogin.class);
 
@@ -39,14 +40,15 @@ public class AuthorizationSteps {
 
     @Step("Вход. Отправка номера телефона и СМС \"/login_phone/{phone}\" и получение токенов")
     public void login_phoneWithSMS(String otp_token) {
-        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL), Specifications.responseSpecOk200());
+        Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL
+                + Constants.ENDPOINT_LOGIN_PHONE + Constants.USER_PHONE), Specifications.responseSpecOk200());
         LoginBodyWithOtpToken loginBodyWithOtpToken = new LoginBodyWithOtpToken(Constants.DEVICE_ID, otp_token);
         UserToken userToken = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", Constants.AUTHENTICATION_TOKEN)
                 .queryParams("code", Constants.CMC_CODE)
                 .body(loginBodyWithOtpToken)
-                .post(Constants.ENDPOINT_LOGIN_PHONE + Constants.USER_PHONE)
+                .post()
                 .then().log().all()
                 .extract().as(UserToken.class);
 

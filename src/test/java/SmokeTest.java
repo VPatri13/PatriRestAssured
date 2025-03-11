@@ -13,11 +13,16 @@ public class SmokeTest {
     @DisplayName("Регистрация")
     public void userRegistration() {
         RegistrationSteps registrationSteps = new RegistrationSteps();
-        String otpToken = Allure.step("Регистрация. Создать нового пользователя на https://test.hyg-core.ru/register",
+        String otpToken = Allure.step("Регистрация. Создать нового пользователя на /register",
                 registrationSteps::registration);
 
-        Allure.step("Регистрация. Подтверждаем номер телефона, передав номер СМС на  https://test.hyg-core.ru/phone_verify/{phone}",
+        String token = Allure.step("Регистрация. Подтверждаем номер телефона, передав номер СМС на /phone_verify/{phone}",
                 () -> registrationSteps.phoneVerify(otpToken));
+
+        Allure.step("Регистрация. Заполняем поля \"username\", \"birthday\", \"gender_id\" в ручке /user/",
+                () -> registrationSteps.user(token));
+
+
     }
 
 
