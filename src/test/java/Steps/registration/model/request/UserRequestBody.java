@@ -1,9 +1,9 @@
 package Steps.registration.model.request;
 
 public class UserRequestBody {
-    public String username;
-    public String birthday;
-    public int gender_id;
+    private String username;
+    private String birthday;
+    private int gender_id;
 
     public UserRequestBody(String username, int gender_id, String birthday) {
         this.username = username;
