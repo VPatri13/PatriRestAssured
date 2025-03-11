@@ -26,9 +26,6 @@ public class SmokeTest {
     }
 
 
-
-
-
     /**
      * Вход в приложение
      */

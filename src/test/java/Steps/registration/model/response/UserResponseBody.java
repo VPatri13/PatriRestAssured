@@ -3,18 +3,18 @@ package Steps.registration.model.response;
 import java.util.ArrayList;
 
 public class UserResponseBody {
-    public int id;
-    public String username;
-    public Object path_thumbnail;
-    public String online_status;
-    public String birthday;
-    public String description;
-    public double rating;
-    public Gender gender;
-    public ArrayList<Object> photos;
-    public int count_sub;
-    public int count_sub_on_me;
-    public int count_certificates;
+    private int id;
+    private String username;
+    private Object path_thumbnail;
+    private String online_status;
+    private String birthday;
+    private String description;
+    private double rating;
+    private Gender gender;
+    private ArrayList<Object> photos;
+    private int count_sub;
+    private int count_sub_on_me;
+    private int count_certificates;
 
     public UserResponseBody() {
     }

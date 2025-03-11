@@ -82,6 +82,9 @@ public class RegistrationSteps {
                 .extract().as(UserResponseBody.class);
 
         Assertions.assertNotNull(userResponseBody.getUsername());
+        Assertions.assertEquals(Constants.USER_NAME, userResponseBody.getUsername());
+        Assertions.assertEquals(Constants.BIRTHDAY, userResponseBody.getBirthday());
+        Assertions.assertEquals(Constants.GENDER, userResponseBody.getGender().getName());
 
     }
 

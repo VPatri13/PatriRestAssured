@@ -1,8 +1,8 @@
 package Steps.registration.model.response;
 
 public class Gender {
-    public int id;
-    public String name;
+    private int id;
+    private String name;
 
     public Gender(int id, String name) {
         this.id = id;
