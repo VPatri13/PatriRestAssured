@@ -18,16 +18,14 @@ public class Constants {
             "jP143VDIMzXOAo-MKqCu5Sg72bAET5bjjU-Mw7_syU3W1b84R5harJzOzovxuvXkgmjh6I8h6H33W0zZs1QvHKmhUUXk91YqlVL" +
             "A1mUNLGlp8CaFgZylV5ib6PxubrG6LsdN6-aKCQ7QdK33qqBMPLp3rDL9stkBNZBji8znsa1Q6-ocuK6mjB3iykvrXN4rVE6M4h" +
             "iLYHPxbXemC1SpkLIo5QOmxr4SqUQWt16U8N2Ft1A";
+
     public static final String ENDPOINT_LOGIN_PHONE = "/login_phone/";
     public static final String ENDPOINT_REGISTRATION = "/register";
     public static final String ENDPOINT_PHONE_VERIFY = "/phone_verify/";
-    public static final String ENDPOINT_USER = "/user/";
-
-
-    public static final String REGISTER_USER_PHONE = "79000070128";
+    public static final String REGISTER_USER_PHONE = "79000070131";
     public static final String USER_PHONE = "79000000001";
     public static final String CMC_CODE = "1234";
-    public static final String USER_NAME = "username24";
+    public static final String USER_NAME = "username27";
     public static final String BIRTHDAY = "2000-09-12";
     public static final int GENDER_ID = 2;
     public static final String GENDER = "Баба";
