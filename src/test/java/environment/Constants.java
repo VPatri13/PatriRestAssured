@@ -22,10 +22,11 @@ public class Constants {
     public static final String ENDPOINT_LOGIN_PHONE = "/login_phone/";
     public static final String ENDPOINT_REGISTRATION = "/register";
     public static final String ENDPOINT_PHONE_VERIFY = "/phone_verify/";
-    public static final String REGISTER_USER_PHONE = "79000070131";
+    public static final String ENDPOINT_USER = "/user/";
+    public static final String REGISTER_USER_PHONE = "79000070133";
     public static final String USER_PHONE = "79000000001";
     public static final String CMC_CODE = "1234";
-    public static final String USER_NAME = "username27";
+    public static final String USER_NAME = "username29";
     public static final String BIRTHDAY = "2000-09-12";
     public static final int GENDER_ID = 2;
     public static final String GENDER = "Баба";

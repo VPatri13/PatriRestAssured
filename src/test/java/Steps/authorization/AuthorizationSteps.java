@@ -39,7 +39,7 @@ public class AuthorizationSteps {
     }
 
     @Step("Вход. Отправка номера телефона и СМС \"/login_phone/{phone}\" и получение токенов")
-    public void login_phoneWithSMS(String otp_token) {
+    public UserToken login_phoneWithSMS(String otp_token) {
         Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL
                 + Constants.ENDPOINT_LOGIN_PHONE + Constants.USER_PHONE), Specifications.responseSpecOk200());
         LoginBodyWithOtpToken loginBodyWithOtpToken = new LoginBodyWithOtpToken(Constants.DEVICE_ID, otp_token);
@@ -58,6 +58,7 @@ public class AuthorizationSteps {
         Assertions.assertFalse(userToken.getToken().isBlank());
         Assertions.assertFalse(userToken.getRefresh_token().isBlank());
 
+        return userToken;
     }
 
 

@@ -7,6 +7,8 @@ import environment.Constants;
 import environment.Specifications;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 
 import static io.restassured.RestAssured.given;
 
@@ -21,14 +23,20 @@ public class Refresh {
 
         RefreshRequestBody refreshRequestBody = new RefreshRequestBody(refresh_token);
 
-        RefreshResponseBody refreshResponseBody = given()
+         Response response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", Constants.AUTHENTICATION_TOKEN)
                 .body(refreshRequestBody)
                 .post()
                 .then().log().all()
-                .extract().as(RefreshResponseBody.class);
+                .extract().response();
 
+        RefreshResponseBody refreshResponseBody = response.as(RefreshResponseBody.class);
 
+        Assertions.assertNotNull(refreshResponseBody.getToken());
+        Assertions.assertNotNull(refreshResponseBody.getRefresh_token());
+        Assertions.assertNotNull(refreshResponseBody.getExp());
+        Assertions.assertFalse(refreshResponseBody.getToken().isBlank());
+        Assertions.assertFalse(refreshResponseBody.getRefresh_token().isBlank());
     }
 }
