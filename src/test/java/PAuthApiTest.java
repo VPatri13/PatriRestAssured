@@ -1,4 +1,5 @@
 import Steps.authorization.AuthorizationSteps;
+import Steps.pauth.AdminUserLogin;
 import Steps.pauth.Refresh;
 import Steps.pauth.VerifyToken;
 import io.qameta.allure.Allure;
@@ -42,4 +43,18 @@ public class PAuthApiTest {
         Allure.step("Обновление Access токена через refresh токен на /refresh",
                 () -> verifyToken.verify_token(token));
     }
+
+    /**
+     *  POST: /admin_user/login
+     */
+    @Test
+    @DisplayName("POST: /admin_user/login")
+    public void admin_userLogin() {
+
+        AdminUserLogin adminUserLogin = new AdminUserLogin();
+
+        Allure.step("Входим в систему как администратор по логину и паролю на /admin_user/login",
+                adminUserLogin::admin_userLogin);
+    }
+
 }
