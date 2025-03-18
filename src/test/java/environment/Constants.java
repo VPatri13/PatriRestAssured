@@ -25,10 +25,10 @@ public class Constants {
     public static final String ENDPOINT_USER = "/user/";
 
 
-    public static final String REGISTER_USER_PHONE = "79000070137";
+    public static final String REGISTER_USER_PHONE = "79000070138";
     public static final String USER_PHONE = "79000000001";
     public static final String CMC_CODE = "1234";
-    public static final String USER_NAME = "username33";
+    public static final String USER_NAME = "username34";
     public static final String BIRTHDAY = "2000-09-12";
     public static final int GENDER_ID = 2;
     public static final String GENDER = "Баба";
