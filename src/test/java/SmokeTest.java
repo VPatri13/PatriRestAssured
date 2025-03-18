@@ -1,5 +1,5 @@
-import Steps.authorization.AuthorizationSteps;
-import Steps.registration.RegistrationSteps;
+import steps.pauth.authorization.AuthorizationSteps;
+import steps.pauth.registration.RegistrationSteps;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

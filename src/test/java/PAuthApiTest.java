@@ -1,7 +1,7 @@
-import Steps.authorization.AuthorizationSteps;
-import Steps.pauth.AdminUserLogin;
-import Steps.pauth.Refresh;
-import Steps.pauth.VerifyToken;
+import steps.pauth.authorization.AuthorizationSteps;
+import steps.pauth.AdminUserLogin;
+import steps.pauth.Refresh;
+import steps.pauth.VerifyToken;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
