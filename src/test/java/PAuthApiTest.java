@@ -40,7 +40,7 @@ public class PAuthApiTest {
                 authorizationSteps::login_phoneWithoutSMS);
         String token = Allure.step("Вход. Отправка номера телефона и СМС на '/login_phone/{phone}' и получение токенов",
                 () -> authorizationSteps.login_phoneWithSMS(otpToken).getToken());
-        Allure.step("Обновление Access токена через refresh токен на /refresh",
+        Allure.step("Проверить токен пользователя на /verify_token/",
                 () -> verifyToken.verify_token(token));
     }
 

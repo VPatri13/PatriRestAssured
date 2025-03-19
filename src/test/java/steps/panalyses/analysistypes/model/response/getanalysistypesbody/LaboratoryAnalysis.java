@@ -1,10 +1,10 @@
-package steps.panalyses.model.response.analysis_types_body;
+package steps.panalyses.analysistypes.model.response.getanalysistypesbody;
 
 public class LaboratoryAnalysis {
-    public int analysis_type_id;
-    public int laboratory_id;
-    public String name;
-    public int id;
+    private int analysis_type_id;
+    private int laboratory_id;
+    private String name;
+    private int id;
 
     public LaboratoryAnalysis(int analysis_type_id, int laboratory_id, String name, int id) {
         this.analysis_type_id = analysis_type_id;

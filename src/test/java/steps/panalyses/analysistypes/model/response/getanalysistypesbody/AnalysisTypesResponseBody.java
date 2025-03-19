@@ -1,14 +1,14 @@
-package steps.panalyses.model.response.analysis_types_body;
+package steps.panalyses.analysistypes.model.response.getanalysistypesbody;
 
 import java.util.ArrayList;
 
 public class AnalysisTypesResponseBody {
 
-    public int page;
-    public int per_page;
-    public int total_pages;
-    public int total_items;
-    public ArrayList<Item> items;
+    private int page;
+    private int per_page;
+    private int total_pages;
+    private int total_items;
+    private ArrayList<Item> items;
 
     public AnalysisTypesResponseBody(int page, int per_page, int total_pages, int total_items, ArrayList<Item> items) {
         this.page = page;

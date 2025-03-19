@@ -1,9 +1,9 @@
-package steps.panalyses.model.response.analysis_types_body;
+package steps.panalyses.analysistypes.model.response.getanalysistypesbody;
 
 public class AnalysisGroup {
-    public String name;
-    public boolean is_default;
-    public int id;
+    private String name;
+    private boolean is_default;
+    private int id;
 
     public AnalysisGroup(String name, boolean is_default, int id) {
         this.name = name;

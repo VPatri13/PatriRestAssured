@@ -23,6 +23,7 @@ public class VerifyToken {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token)
+                .when()
                 .post()
                 .then().log().all()
                 .extract().response();

@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class AdminUserLogin {
     @Step("p-auth POST: /admin_user/login")
-    public void admin_userLogin() {
+    public  AdminUserLoginResponseBody admin_userLogin() {
         String admin_userLogin = "/admin_user/login";
         String username = "qa";
         String password = "admin12345hhkk";
@@ -26,6 +26,7 @@ public class AdminUserLogin {
         Response response = given()
                 .contentType(ContentType.JSON)
                 .body(adminUserLoginRequestBody)
+                .when()
                 .post()
                 .then().log().all()
                 .extract().response();
@@ -37,6 +38,8 @@ public class AdminUserLogin {
         Assertions.assertNotNull(adminUserLoginResponseBody.getExp());
         Assertions.assertFalse(adminUserLoginResponseBody.getToken().isBlank());
         Assertions.assertFalse(adminUserLoginResponseBody.getRefresh_token().isBlank());
+
+        return adminUserLoginResponseBody;
 
     }
 }

@@ -48,6 +48,7 @@ public class AuthorizationSteps {
                 .header("Authorization", Constants.AUTHENTICATION_TOKEN)
                 .queryParams("code", Constants.CMC_CODE)
                 .body(loginBodyWithOtpToken)
+                .when()
                 .post()
                 .then().log().all()
                 .extract().as(UserToken.class);

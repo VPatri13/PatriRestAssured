@@ -26,6 +26,7 @@ public class Refresh {
                 .contentType(ContentType.JSON)
                 .header("Authorization", Constants.AUTHENTICATION_TOKEN)
                 .body(refreshRequestBody)
+                .when()
                 .post()
                 .then().log().all()
                 .extract().response();
