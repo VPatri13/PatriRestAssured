@@ -15,7 +15,7 @@ public class PostAnalysisTypes {
     @Step("p-analyses POST: /analysis_types/")
     public PostAnalysisTypesResponseBody analysis_types(String token) {
         String analysis_types = "/analysis_types/";
-        String nameAnalysisTypes = "Тестовый тип анализа1";
+        String nameAnalysisTypes = "Тестовый тип анализа5";
 
         Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL + analysis_types),
                 Specifications.responseSpecOk200());
