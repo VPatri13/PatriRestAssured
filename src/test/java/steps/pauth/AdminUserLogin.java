@@ -15,8 +15,8 @@ public class AdminUserLogin {
     @Step("p-auth POST: /admin_user/login")
     public  AdminUserLoginResponseBody admin_userLogin() {
         String admin_userLogin = "/admin_user/login";
-        String username = "qa";
-        String password = "admin12345hhkk";
+        String username = ""; // Сюда пока кинем логин и пароль
+        String password = ""; // Временное решение пока настраиваю, потом сделаю по феншую:)
 
         Specifications.installSpecification(Specifications.requestSpec(Constants.BASE_URL + admin_userLogin),
                 Specifications.responseSpecOk200());
